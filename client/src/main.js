@@ -6,14 +6,14 @@ async function handleSubmitMessage(event) {
   event.preventDefault();
   const formData = new FormData(form);
   const messageData = Object.fromEntries(formData);
-  fetch(`${API_URL}`, {
+  await fetch(`${API_URL}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(messageData),
   });
-  setTimeout(2000, getMessages());
+  getMessages();
 }
 
 async function getMessages() {
@@ -29,11 +29,11 @@ async function getMessages() {
     const deleteButton = document.createElement("button");
     deleteButton.id = "delete";
     deleteButton.innerText = "Delete";
-    deleteButton.addEventListener("click", () => {
-      fetch(`${API_URL}/${message.id}`, {
+    deleteButton.addEventListener("click", async () => {
+      await fetch(`${API_URL}/${message.id}`, {
         method: "DELETE",
       });
-      setTimeout(2000, getMessages());
+      getMessages();
     });
     messageContainer.appendChild(deleteButton);
     app.appendChild(messageContainer);
