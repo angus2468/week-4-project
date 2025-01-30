@@ -6,13 +6,20 @@ async function handleSubmitMessage(event) {
   event.preventDefault();
   const formData = new FormData(form);
   const messageData = Object.fromEntries(formData);
-  await fetch(`${API_URL}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(messageData),
-  });
+  if (messageData.author == "") {
+    alert("Name must be filled out");
+    return false;
+  } else if (messageData.message == "") {
+    alert("Message must be filled out");
+    return false;
+  } else
+    await fetch(`${API_URL}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(messageData),
+    });
   getMessages();
 }
 

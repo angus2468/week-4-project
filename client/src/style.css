@@ -7,6 +7,8 @@
   height: fit-content;
   justify-content: space-between;
   margin-top: 10px;
+  border-radius: 30px;
+  width: 60vw;
 }
 #delete {
   height: fit-content;
@@ -31,4 +33,28 @@ h2 {
 }
 button {
   margin-right: 15px;
+  background-color: #c8b8db;
+  border: black 1px solid;
+  border-radius: 15px;
+}
+input {
+  background-color: #c8b8db;
+  border: black 1px solid;
+  border-radius: 5px;
+}
+form {
+  display: flex;
+  gap: 5px;
+  border: 2px solid black;
+  background-color: #70587c;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 30px;
+}
+.userInput {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
 }
