@@ -1,6 +1,6 @@
 const form = document.getElementById("form");
 const app = document.getElementById("app");
-const API_URL = "http://localhost:8080/messages";
+const API_URL = "https://week-4-project-server.onrender.com/messages";
 
 async function handleSubmitMessage(event) {
   event.preventDefault();
@@ -13,7 +13,7 @@ async function handleSubmitMessage(event) {
     },
     body: JSON.stringify(messageData),
   });
-  getMessages();
+  setTimeout(2000, getMessages());
 }
 
 async function getMessages() {
@@ -33,7 +33,7 @@ async function getMessages() {
       fetch(`${API_URL}/${message.id}`, {
         method: "DELETE",
       });
-      getMessages();
+      setTimeout(2000, getMessages());
     });
     messageContainer.appendChild(deleteButton);
     app.appendChild(messageContainer);

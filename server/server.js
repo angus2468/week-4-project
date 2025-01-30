@@ -31,6 +31,7 @@ app.delete("/messages/:id", async (request, response) => {
   const deleted = await db.query(`DELETE FROM messages WHERE id = $1`, [
     request.params.id,
   ]);
+  response.json(deleted);
 });
 
 app.listen(8080, () => {
