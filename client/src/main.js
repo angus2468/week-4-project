@@ -12,6 +12,12 @@ async function handleSubmitMessage(event) {
   } else if (messageData.message == "") {
     alert("Message must be filled out");
     return false;
+  } else if (
+    messageData.author.includes("'") ||
+    messageData.message.includes("'")
+  ) {
+    alert("Your name and message cannot contain ' ");
+    return false;
   } else
     await fetch(`${API_URL}`, {
       method: "POST",
